@@ -1,0 +1,27 @@
+version: '3'
+services:
+  zk-debug:
+    image: confluentinc/cp-zookeeper:7.2.0
+    container_name: zk-debug
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka-debug: # https://docs.confluent.io/platform/current/installation/docker/config-reference.html
+    image: confluentinc/cp-kafka:7.2.0
+    container_name: kafka-debug
+    depends_on:
+      - zk-debug
+    ports:
+      - "9092:9092"
+      - "5555:5005"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zk-debug:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-debug:29092,PLAINTEXT_HOST://kafka-debug:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_JMX_PORT: 9999
+      KAFKA_JVM_PERFORMANCE_OPTS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
