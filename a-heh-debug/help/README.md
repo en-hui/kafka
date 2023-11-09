@@ -17,6 +17,7 @@ https://sites.ipaddress.com/raw.githubusercontent.com/
 
 
 ## debug help
+![img.png](img/debug.png)
 
 ### client
 

@@ -14,7 +14,7 @@ services:
       - zk-debug
     ports:
       - "9092:9092"
-      - "5555:5005"
+      - "5005:5005"
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zk-debug:2181
