@@ -97,5 +97,9 @@ include 'clients',
     'tools',
     'tools:tools-api',
     'trogdor'
+include 'a-heh-debug'
+include 'a-heh-debug:heh-debug-gradle'
+findProject(':a-heh-debug:heh-debug-gradle')?.name = 'heh-debug-gradle'
+
 
 rootProject.name = 'kafka'
