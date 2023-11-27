@@ -16,8 +16,8 @@ https://sites.ipaddress.com/raw.githubusercontent.com/
 ```
 
 
-## debug help
-![img.png](img/debug.png)
+## debug broker help
+![img.png](img/debug-broker.png)
 
 ### client
 
